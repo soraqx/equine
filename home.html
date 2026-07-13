@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Equine Vital — Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: { colors: { forest: '#123524', moss: '#4f6f52', sage: '#7d9b72', cream: '#f8f4e8', olive: '#556b2f' } } } };
+    </script>
+  </head>
+  <body class="min-h-screen bg-cream text-slate-800">
+    <div id="header-container"></div>
+
+    <main>
+      <div id="hero-container"></div>
+      <div id="banner-container"></div>
+      <div id="products-container"></div>
+      <div id="testimonials-container"></div>
+    </main>
+
+    <footer class="border-t border-green-900/10 bg-white/70">
+      <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <p>© 2026 Equine Vital Horse Health</p>
+      </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+      async function loadSection(containerId, filePath) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        const response = await fetch(filePath);
+        if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+        container.innerHTML = await response.text();
+      }
+
+      Promise.all([
+        loadSection('header-container', 'sections/header.html'),
+        loadSection('hero-container', 'sections/hero.html'),
+        loadSection('banner-container', 'sections/banner.html'),
+        loadSection('products-container', 'sections/products.html'),
+        loadSection('testimonials-container', 'sections/testimonials.html')
+      ])
+        .then(() => {
+          if (window.initMobileMenu) window.initMobileMenu();
+        })
+        .catch(console.error);
+    </script>
+  </body>
+</html>
