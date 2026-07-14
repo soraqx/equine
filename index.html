@@ -25,23 +25,137 @@
     </script>
 </head>
 
-<body class="flex min-h-screen flex-col bg-cream text-slate-800">
-    <meta http-equiv="refresh" content="0; url=home.html" />
-    <p>If you are not redirected, <a href="home.html">click here</a>.</p>
+<body class="flex min-h-screen flex-col bg-cream font-[Sora] text-slate-800">
+    <div id="header-container"></div>
 
-    <footer id="contact" class="border-t border-green-900/10 bg-white/70">
+    <main class="flex-1">
+        <section id="home"
+            class="relative mx-auto overflow-hidden bg-forest px-4 py-16 shadow-xl sm:px-6 lg:px-8 lg:py-24">
+            <img src="resources/images/images%20(1).jpg" alt="Horse wellness support"
+                class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-r from-forest/90 via-forest/75 to-moss/70"></div>
+            <div class="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+                <div class="space-y-6 text-white">
+                    <span
+                        class="inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-sm font-medium backdrop-blur">Trusted
+                        horse wellness support</span>
+                    <h1 class="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">Elevate your
+                        horse’s health with calm, confident care.</h1>
+                    <p class="max-w-xl text-lg text-green-50">Discover balanced nutrition, recovery support, and daily
+                        wellness routines designed for strong, resilient horses.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#partner"
+                            class="rounded-full bg-white px-6 py-3 font-semibold text-forest transition hover:bg-green-50">Explore
+                            Wellness</a>
+                        <a href="#shop"
+                            class="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white/10">Shop
+                            Essentials</a>
+                    </div>
+                </div>
+
+                <div class="rounded-[1.5rem] border border-white/20 bg-white/10 p-8 text-white shadow-lg backdrop-blur">
+                    <p class="text-sm uppercase tracking-[0.35em] text-green-100">Why horses thrive</p>
+                    <div class="mt-6 space-y-4">
+                        <div class="rounded-2xl bg-white/15 p-4">
+                            <h2 class="font-semibold">Balanced nutrition</h2>
+                            <p class="mt-1 text-sm text-green-50">Fuel energy, gut balance, and steady recovery with
+                                smart
+                                daily support.</p>
+                        </div>
+                        <div class="rounded-2xl bg-white/15 p-4">
+                            <h2 class="font-semibold">Gentle movement</h2>
+                            <p class="mt-1 text-sm text-green-50">Support comfort, circulation, and mobility through
+                                thoughtful routines.</p>
+                        </div>
+                        <div class="rounded-2xl bg-white/15 p-4">
+                            <h2 class="font-semibold">Restorative care</h2>
+                            <p class="mt-1 text-sm text-green-50">Improve resilience with recovery-focused habits and
+                                expert
+                                guidance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <div
+                class="overflow-hidden rounded-[2rem] border border-green-900/10 bg-gradient-to-br from-forest via-moss to-sage shadow-xl">
+                <div class="grid gap-6 p-8 lg:grid-cols-[1fr_0.85fr] lg:p-12">
+                    <div class="space-y-4 text-white">
+                        <span
+                            class="inline-flex rounded-full border border-white/25 bg-white/10 px-3 py-1 text-sm font-medium backdrop-blur">New
+                            season wellness</span>
+                        <h2 class="max-w-2xl text-3xl font-semibold leading-tight sm:text-4xl">Give your horse the
+                            comfort and support they deserve every day.</h2>
+                        <p class="max-w-xl text-base leading-7 text-green-50 sm:text-lg">Discover thoughtful solutions
+                            for recovery, daily balance, and long-term vitality with a trusted, modern approach.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#shop"
+                                class="rounded-full bg-white px-6 py-3 font-semibold text-forest transition hover:bg-green-50">View
+                                products</a>
+                            <a href="#partner"
+                                class="rounded-full border border-white/30 px-6 py-3 font-semibold text-white transition hover:bg-white/10">Hear
+                                from owners</a>
+                        </div>
+                    </div>
+
+                    <div class="rounded-[1.5rem] border border-white/20 bg-white/10 p-3 backdrop-blur-sm">
+                        <img src="resources/images/images%20(1).jpg" alt="Horse standing in a green field"
+                            class="h-64 w-full rounded-[1.2rem] object-cover sm:h-72" loading="lazy" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="products-container"></div>
+        <div id="testimonials-container"></div>
+
+        <section id="contact" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+            <div class="rounded-2xl border border-green-900/10 bg-white p-8 shadow-sm">
+                <div class="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+                    <div class="space-y-4">
+                        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-moss">Contact</p>
+                        <h2 class="text-3xl font-semibold text-forest sm:text-4xl">Speak with our wellness team</h2>
+                        <p class="text-sm text-slate-600">Have questions about products, stable visits, or horse care
+                            plans?
+                            Send a message and we’ll respond promptly.</p>
+                    </div>
+                    <form class="grid gap-4 sm:grid-cols-2">
+                        <div>
+                            <label class="mb-1 block text-sm font-medium text-slate-700">Name</label>
+                            <input type="text" class="w-full rounded-md border border-green-200 px-3 py-2"
+                                placeholder="Your name" />
+                        </div>
+                        <div>
+                            <label class="mb-1 block text-sm font-medium text-slate-700">Email</label>
+                            <input type="email" class="w-full rounded-md border border-green-200 px-3 py-2"
+                                placeholder="you@example.com" />
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label class="mb-1 block text-sm font-medium text-slate-700">Message</label>
+                            <textarea rows="5" class="w-full rounded-md border border-green-200 px-3 py-2"
+                                placeholder="Tell us how we can help"></textarea>
+                        </div>
+                        <div class="sm:col-span-2 flex items-center justify-end">
+                            <button type="submit"
+                                class="rounded-full bg-forest px-6 py-2 text-sm font-semibold text-white transition hover:bg-moss">Send
+                                message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-green-900/10 bg-white/70">
         <div
             class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-sm text-slate-600 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
             <p>© 2026 Equine Vital Horse Health</p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#home" class="transition hover:text-moss">Home</a>
-                <a href="#contact" class="transition hover:text-moss">Contact</a>
-                <a href="#partner" class="transition hover:text-moss">Partner</a>
-            </div>
         </div>
     </footer>
 
-    <script src="./scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
     <script>
         async function loadSection(containerId, filePath) {
             const container = document.getElementById(containerId);
@@ -53,19 +167,13 @@
 
         Promise.all([
             loadSection('header-container', 'sections/header.html'),
-            loadSection('hero-container', 'sections/hero.html'),
-            loadSection('banner-container', 'sections/banner.html'),
             loadSection('products-container', 'sections/products.html'),
             loadSection('testimonials-container', 'sections/testimonials.html')
         ])
             .then(() => {
-                if (window.initMobileMenu) {
-                    window.initMobileMenu();
-                }
+                if (window.initMobileMenu) window.initMobileMenu();
             })
-            .catch((error) => {
-                console.error(error);
-            });
+            .catch(console.error);
     </script>
 </body>
 
