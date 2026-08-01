@@ -807,11 +807,15 @@ blockquote {
 }
 
 /* Evidence */
-.success-stories__grid,
+.success-stories__grid {
+    display: grid;
+    gap: 1rem;
+}
+
 .science__principles,
 .science__resources {
     display: grid;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .success-story-card {
