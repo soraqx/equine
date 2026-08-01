@@ -26,7 +26,7 @@
 </head>
 
 <body class="flex min-h-screen flex-col bg-cream font-[Sora] text-slate-800">
-    <div id="header-container"></div>
+    <div data-include="header"></div>
 
     <main class="flex-1">
         <section id="home"
@@ -108,8 +108,8 @@
             </div>
         </section>
 
-        <div id="products-container"></div>
-        <div id="testimonials-container"></div>
+        <div data-include="products"></div>
+        <div data-include="testimonials"></div>
 
         <section id="contact" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div class="rounded-2xl border border-green-900/10 bg-white p-8 shadow-sm">
@@ -121,22 +121,27 @@
                             plans?
                             Send a message and we’ll respond promptly.</p>
                     </div>
-                    <form class="grid gap-4 sm:grid-cols-2">
+                    <!-- Replace the placeholder access key with your Web3Forms public access key. -->
+                    <form class="grid gap-4 sm:grid-cols-2" data-contact-form
+                        data-endpoint="https://api.web3forms.com/submit">
+                        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+                        <input type="hidden" name="subject" value="New Equine Vital website enquiry" />
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-slate-700">Name</label>
-                            <input type="text" class="w-full rounded-md border border-green-200 px-3 py-2"
-                                placeholder="Your name" />
+                            <label class="mb-1 block text-sm font-medium text-slate-700" for="contact-name">Name</label>
+                            <input id="contact-name" name="name" type="text" required autocomplete="name"
+                                class="w-full rounded-md border border-green-200 px-3 py-2" placeholder="Your name" />
                         </div>
                         <div>
-                            <label class="mb-1 block text-sm font-medium text-slate-700">Email</label>
-                            <input type="email" class="w-full rounded-md border border-green-200 px-3 py-2"
-                                placeholder="you@example.com" />
+                            <label class="mb-1 block text-sm font-medium text-slate-700" for="contact-email">Email</label>
+                            <input id="contact-email" name="email" type="email" required autocomplete="email"
+                                class="w-full rounded-md border border-green-200 px-3 py-2" placeholder="you@example.com" />
                         </div>
                         <div class="sm:col-span-2">
-                            <label class="mb-1 block text-sm font-medium text-slate-700">Message</label>
-                            <textarea rows="5" class="w-full rounded-md border border-green-200 px-3 py-2"
-                                placeholder="Tell us how we can help"></textarea>
+                            <label class="mb-1 block text-sm font-medium text-slate-700" for="contact-message">Message</label>
+                            <textarea id="contact-message" name="message" rows="5" required
+                                class="w-full rounded-md border border-green-200 px-3 py-2" placeholder="Tell us how we can help"></textarea>
                         </div>
+                        <p data-form-status class="sm:col-span-2 text-sm" role="status" aria-live="polite" hidden></p>
                         <div class="sm:col-span-2 flex items-center justify-end">
                             <button type="submit"
                                 class="rounded-full bg-forest px-6 py-2 text-sm font-semibold text-white transition hover:bg-moss">Send
@@ -156,25 +161,6 @@
     </footer>
 
     <script src="scripts/main.js"></script>
-    <script>
-        async function loadSection(containerId, filePath) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            const response = await fetch(filePath);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            container.innerHTML = await response.text();
-        }
-
-        Promise.all([
-            loadSection('header-container', 'sections/header.html'),
-            loadSection('products-container', 'sections/products.html'),
-            loadSection('testimonials-container', 'sections/testimonials.html')
-        ])
-            .then(() => {
-                if (window.initMobileMenu) window.initMobileMenu();
-            })
-            .catch(console.error);
-    </script>
 </body>
 
 </html>
