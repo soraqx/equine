@@ -212,6 +212,26 @@ function createProfileMessage(message, isError = false) {
   return paragraph;
 }
 
+function initCarouselNav() {
+  const wrappers = document.querySelectorAll('.carousel-wrapper');
+
+  wrappers.forEach((wrapper) => {
+    const prevButton = wrapper.querySelector('.carousel-btn--prev');
+    const nextButton = wrapper.querySelector('.carousel-btn--next');
+    const carousel = wrapper.querySelector('.testimonials-carousel');
+
+    if (!prevButton || !nextButton || !carousel) return;
+
+    prevButton.addEventListener('click', () => {
+      carousel.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+
+    nextButton.addEventListener('click', () => {
+      carousel.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+  });
+}
+
 function setFormStatus(element, state, message) {
   element.hidden = false;
   element.className = state === 'success'
@@ -227,4 +247,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMobileMenu();
   initContactForm();
   initUniversalModals();
+  initCarouselNav();
 });
