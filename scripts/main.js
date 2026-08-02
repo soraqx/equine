@@ -113,6 +113,21 @@ function initContactForm() {
 }
 
 /** Loads the selected professional profile into the partnership modal. */
+function closeProfileModal() {
+  const modal = document.querySelector('.profile-modal');
+
+  if (!modal || modal.hidden) return;
+
+  modal.classList.remove('profile-modal--active');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.hidden = true;
+
+  if (window.__equineVitalLastTrigger instanceof HTMLElement) {
+    window.__equineVitalLastTrigger.focus();
+    window.__equineVitalLastTrigger = null;
+  }
+}
+
 function initProfileModals() {
   const modal = document.querySelector('.profile-modal');
   const content = modal?.querySelector('.profile-modal__content');
@@ -123,10 +138,7 @@ function initProfileModals() {
   if (!modal || !content || !closeButton || !profileCards.length) return;
 
   const closeModal = () => {
-    if (modal.hidden) return;
-    modal.classList.remove('profile-modal--active');
-    modal.setAttribute('aria-hidden', 'true');
-    modal.hidden = true;
+    closeProfileModal();
     lastTrigger?.focus();
   };
 
@@ -134,6 +146,7 @@ function initProfileModals() {
     if (!/^[a-z0-9-]+$/.test(profileName)) return;
 
     lastTrigger = trigger;
+    window.__equineVitalLastTrigger = trigger;
     content.replaceChildren(createProfileMessage('Loading profile…'));
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
