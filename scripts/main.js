@@ -112,9 +112,13 @@ function initContactForm() {
   });
 }
 
-/** Loads the selected professional profile into the partnership modal. */
+/** Loads the selected professional profile or content module into the shared modal. */
+function getModalElement() {
+  return document.querySelector('.universal-modal, .profile-modal');
+}
+
 function closeProfileModal() {
-  const modal = document.querySelector('.profile-modal');
+  const modal = getModalElement();
 
   if (!modal || modal.hidden) return;
 
@@ -129,48 +133,66 @@ function closeProfileModal() {
 }
 
 function initProfileModals() {
-  const modal = document.querySelector('.profile-modal');
-  const content = modal?.querySelector('.profile-modal__content');
-  const closeButton = modal?.querySelector('.profile-modal__close');
+  const modal = getModalElement();
+  const content = modal?.querySelector('.universal-modal__content, .profile-modal__content');
+  const closeButton = modal?.querySelector('.universal-modal__close, .profile-modal__close');
   const profileCards = document.querySelectorAll('.partner-card');
   let lastTrigger = null;
 
-  if (!modal || !content || !closeButton || !profileCards.length) return;
+  if (!modal || !content || !closeButton) return;
 
   const closeModal = () => {
     closeProfileModal();
     lastTrigger?.focus();
   };
 
-  const openModal = async (profileName, trigger) => {
-    if (!/^[a-z0-9-]+$/.test(profileName)) return;
+  const openModal = async (targetPath, trigger, subject = '') => {
+    if (!targetPath || targetPath.includes('..') || /[<>]/.test(targetPath)) return;
 
     lastTrigger = trigger;
     window.__equineVitalLastTrigger = trigger;
-    content.replaceChildren(createProfileMessage('Loading profile…'));
+    content.replaceChildren(createProfileMessage('Loading content…'));
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
     requestAnimationFrame(() => modal.classList.add('profile-modal--active'));
     closeButton.focus();
 
     try {
-      const response = await fetch(`sections/profiles/${profileName}.html`, {
+      const response = await fetch(targetPath, {
         credentials: 'same-origin',
       });
 
-      if (!response.ok) throw new Error(`Profile request failed (${response.status})`);
+      if (!response.ok) throw new Error(`Modal content request failed (${response.status})`);
 
       const template = document.createElement('template');
       template.innerHTML = await response.text();
-      content.replaceChildren(template.content);
+      const fragment = template.content;
+
+      if (subject) {
+        const subjectInput = fragment.querySelector('#form-subject');
+        if (subjectInput) subjectInput.value = subject;
+      }
+
+      content.replaceChildren(fragment);
     } catch (error) {
-      console.error('Unable to load partner profile:', error);
-      content.replaceChildren(createProfileMessage('This profile is not available yet. Please contact our team for more information.', true));
+      console.error('Unable to load modal content:', error);
+      content.replaceChildren(createProfileMessage('This content is not available yet. Please contact our team for more information.', true));
     }
   };
 
   profileCards.forEach((card) => {
-    card.addEventListener('click', () => openModal(card.dataset.profile, card));
+    card.addEventListener('click', (event) => {
+      event.preventDefault();
+      openModal(`sections/profiles/${card.dataset.profile}.html`, card);
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('button[data-modal-target], a[data-modal-target]');
+    if (!trigger) return;
+
+    event.preventDefault();
+    openModal(trigger.dataset.modalTarget, trigger, trigger.dataset.subject || '');
   });
 
   closeButton.addEventListener('click', closeModal);
