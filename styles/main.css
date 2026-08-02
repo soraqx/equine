@@ -559,6 +559,15 @@ blockquote {
     color: var(--color-primary-dark);
 }
 
+.challenges__bridge {
+    max-width: 50rem;
+    margin: 3rem auto 0;
+    color: var(--color-muted);
+    font-size: 1.125rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
 .trust {
     background: var(--color-surface-alt) !important;
 }

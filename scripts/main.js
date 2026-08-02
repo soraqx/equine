@@ -132,7 +132,7 @@ function closeProfileModal() {
   }
 }
 
-function initProfileModals() {
+function initUniversalModals() {
   const modal = getModalElement();
   const content = modal?.querySelector('.universal-modal__content, .profile-modal__content');
   const closeButton = modal?.querySelector('.universal-modal__close, .profile-modal__close');
@@ -226,5 +226,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   await injectSections();
   initMobileMenu();
   initContactForm();
-  initProfileModals();
+  initUniversalModals();
 });
