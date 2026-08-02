@@ -112,6 +112,71 @@ function initContactForm() {
   });
 }
 
+/** Loads the selected professional profile into the partnership modal. */
+function initProfileModals() {
+  const modal = document.querySelector('.profile-modal');
+  const content = modal?.querySelector('.profile-modal__content');
+  const closeButton = modal?.querySelector('.profile-modal__close');
+  const profileCards = document.querySelectorAll('.partner-card');
+  let lastTrigger = null;
+
+  if (!modal || !content || !closeButton || !profileCards.length) return;
+
+  const closeModal = () => {
+    if (modal.hidden) return;
+    modal.classList.remove('profile-modal--active');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.hidden = true;
+    lastTrigger?.focus();
+  };
+
+  const openModal = async (profileName, trigger) => {
+    if (!/^[a-z0-9-]+$/.test(profileName)) return;
+
+    lastTrigger = trigger;
+    content.replaceChildren(createProfileMessage('Loading profile…'));
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => modal.classList.add('profile-modal--active'));
+    closeButton.focus();
+
+    try {
+      const response = await fetch(`sections/profiles/${profileName}.html`, {
+        credentials: 'same-origin',
+      });
+
+      if (!response.ok) throw new Error(`Profile request failed (${response.status})`);
+
+      const template = document.createElement('template');
+      template.innerHTML = await response.text();
+      content.replaceChildren(template.content);
+    } catch (error) {
+      console.error('Unable to load partner profile:', error);
+      content.replaceChildren(createProfileMessage('This profile is not available yet. Please contact our team for more information.', true));
+    }
+  };
+
+  profileCards.forEach((card) => {
+    card.addEventListener('click', () => openModal(card.dataset.profile, card));
+  });
+
+  closeButton.addEventListener('click', closeModal);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeModal();
+  });
+}
+
+function createProfileMessage(message, isError = false) {
+  const paragraph = document.createElement('p');
+  paragraph.className = isError ? 'profile-modal__message profile-modal__message--error' : 'profile-modal__message';
+  paragraph.setAttribute('role', isError ? 'alert' : 'status');
+  paragraph.textContent = message;
+  return paragraph;
+}
+
 function setFormStatus(element, state, message) {
   element.hidden = false;
   element.className = state === 'success'
@@ -126,4 +191,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   await injectSections();
   initMobileMenu();
   initContactForm();
+  initProfileModals();
 });

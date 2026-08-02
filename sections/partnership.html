@@ -11,22 +11,28 @@
             <aside class="partnership__qualification" aria-labelledby="qualification-title">
                 <h3 class="partnership__qualification-title" id="qualification-title">Who Should Apply</h3>
                 <p class="partnership__qualification-intro">Built for established equestrian professionals and businesses.</p>
-                <ul class="partnership__qualification-list" role="list">
-                    <li class="partnership__qualification-item">Racing Trainers</li>
-                    <li class="partnership__qualification-item">Multiple Horse Owners</li>
-                    <li class="partnership__qualification-item">Veterinary Clinics</li>
-                    <li class="partnership__qualification-item">Rehabilitation Centres</li>
-                    <li class="partnership__qualification-item">Riding Schools</li>
-                    <li class="partnership__qualification-item">Competition Yards</li>
-                    <li class="partnership__qualification-item">Horse Breeders</li>
-                    <li class="partnership__qualification-item">Stud Farms</li>
-                    <li class="partnership__qualification-item">Equine Physiotherapists</li>
-                    <li class="partnership__qualification-item">Equine Chiropractors</li>
-                    <li class="partnership__qualification-item">Equine Massage Therapists</li>
-                    <li class="partnership__qualification-item">Saddle Fitters</li>
-                    <li class="partnership__qualification-item">Feed Suppliers</li>
-                    <li class="partnership__qualification-item">Tack Shops</li>
-                </ul>
+                <div class="partner-grid" aria-label="Ideal partner profiles">
+                    <button class="partner-card" type="button" data-profile="racehorse-trainers">Racehorse Trainers</button>
+                    <button class="partner-card" type="button" data-profile="breeding-farms">Breeding Farms</button>
+                    <button class="partner-card" type="button" data-profile="showjumping-yards">Showjumping Yards</button>
+                    <button class="partner-card" type="button" data-profile="dressage-centres">Dressage Centres</button>
+                    <button class="partner-card" type="button" data-profile="eventing-stables">Eventing Stables</button>
+                    <button class="partner-card" type="button" data-profile="endurance-teams">Endurance Teams</button>
+                    <button class="partner-card" type="button" data-profile="polo-clubs">Polo Clubs</button>
+                    <button class="partner-card" type="button" data-profile="veterinary-hospitals">Veterinary Hospitals</button>
+                    <button class="partner-card" type="button" data-profile="rehabilitation-centres">Rehabilitation Centres</button>
+                    <button class="partner-card" type="button" data-profile="equine-physiotherapists">Equine Physiotherapists</button>
+                    <button class="partner-card" type="button" data-profile="equine-chiropractors">Equine Chiropractors</button>
+                    <button class="partner-card" type="button" data-profile="massage-therapists">Massage Therapists</button>
+                    <button class="partner-card" type="button" data-profile="boarding-facilities">Boarding Facilities</button>
+                    <button class="partner-card" type="button" data-profile="riding-schools">Riding Schools</button>
+                    <button class="partner-card" type="button" data-profile="transport-companies">Transport Companies</button>
+                    <button class="partner-card" type="button" data-profile="tack-shops">Tack Shops</button>
+                    <button class="partner-card" type="button" data-profile="feed-distributors">Feed Distributors</button>
+                    <button class="partner-card" type="button" data-profile="professional-grooms">Professional Grooms</button>
+                    <button class="partner-card" type="button" data-profile="national-training">National Training</button>
+                    <button class="partner-card" type="button" data-profile="large-owners">Large Owners</button>
+                </div>
             </aside>
         </div>
     </div>
@@ -111,3 +117,12 @@
         </ol>
     </div>
 </section>
+
+<div class="profile-modal" role="dialog" aria-modal="true" aria-label="Partner profile" aria-hidden="true" hidden>
+    <div class="profile-modal__dialog">
+        <button class="profile-modal__close" type="button" aria-label="Close partner profile">&times;</button>
+        <div class="profile-modal__content" aria-live="polite">
+            <h2>Partner Profile</h2>
+        </div>
+    </div>
+</div>
