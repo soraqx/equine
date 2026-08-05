@@ -250,6 +250,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initUniversalModals();
   initCarouselNav();
   initResearchAccordion();
+  initPlacementLoader();
 });
 
 function initRegistrationForm() {
@@ -352,4 +353,40 @@ function initResearchAccordion() {
     });
 
     updateView();
+}
+
+function initPlacementLoader() {
+    const buttons = document.querySelectorAll('.placement-selector__btn');
+    const display = document.getElementById('placementDisplay');
+
+    if (!buttons.length || !display) return;
+
+    function loadGuide(product) {
+        display.innerHTML = '<p class="placement-display__loading">Loading guide...</p>';
+
+        fetch(`sections/placement/${product}.html`, { credentials: 'same-origin' })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.text();
+            })
+            .then(html => {
+                display.innerHTML = html;
+            })
+            .catch(() => {
+                display.innerHTML = '<p class="placement-display__loading">Failed to load guide. Please try again.</p>';
+            });
+    }
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            loadGuide(btn.dataset.placement);
+        });
+    });
+
+    const activeBtn = document.querySelector('.placement-selector__btn.is-active');
+    if (activeBtn) {
+        loadGuide(activeBtn.dataset.placement);
+    }
 }
