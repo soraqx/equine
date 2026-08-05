@@ -924,8 +924,14 @@ blockquote {
 
 .partnership__content {
     align-self: start;
-    position: sticky;
-    top: 6rem;
+    position: static;
+}
+
+@media (min-width: 1024px) {
+    .partnership__content {
+        position: sticky;
+        top: 6rem;
+    }
 }
 
 .partnership .section__eyebrow {
