@@ -1215,6 +1215,11 @@ blockquote {
     margin-top: 1.5rem;
 }
 
+.catalog-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
 .product-card {
     display: grid;
     background: var(--color-white);
