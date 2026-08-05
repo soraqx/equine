@@ -249,6 +249,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initRegistrationForm();
   initUniversalModals();
   initCarouselNav();
+  initResearchAccordion();
 });
 
 function initRegistrationForm() {
@@ -284,4 +285,43 @@ function initRegistrationForm() {
       messageElement.textContent = 'Registration failed. Please try again later.';
     }
   });
+}
+
+function initResearchAccordion() {
+    const filter = document.getElementById('researchFilter');
+    const items = document.querySelectorAll('.research-item');
+    const triggers = document.querySelectorAll('.research-item__trigger');
+
+    if (!filter || items.length === 0) return;
+
+    filter.addEventListener('change', () => {
+        const value = filter.value;
+
+        items.forEach((item) => {
+            const product = item.dataset.product;
+            if (value === 'all' || product === value) {
+                item.classList.remove('is-hidden');
+            } else {
+                item.classList.add('is-hidden');
+            }
+        });
+    });
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+            const item = trigger.closest('.research-item');
+            const isActive = item.classList.contains('is-active');
+
+            // Close other open accordions
+            items.forEach((otherItem) => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('is-active');
+                    otherItem.querySelector('.research-item__trigger')?.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            item.classList.toggle('is-active', !isActive);
+            trigger.setAttribute('aria-expanded', String(!isActive));
+        });
+    });
 }
