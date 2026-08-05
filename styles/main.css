@@ -1872,7 +1872,7 @@ blockquote {
 }
 
 .contact-details-list__link {
-    color: var(--color-primary-dark);
+    color: var(--color-white);
     text-decoration: none;
 }
 
