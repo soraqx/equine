@@ -274,7 +274,7 @@ blockquote {
 }
 
 .header__logo-image {
-    height: 48px;
+    height: 68px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -300,7 +300,7 @@ blockquote {
 .header__name {
     color: var(--color-primary-dark);
     font-family: var(--font-heading);
-    font-size: 1.05rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
@@ -308,7 +308,7 @@ blockquote {
     margin-top: 0.15rem;
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 0.73rem;
+    font-size: 1rem;
     font-weight: 600;
 }
 
