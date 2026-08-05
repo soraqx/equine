@@ -2265,7 +2265,7 @@ select.registration-form__input {
 
     .research-catalog__header {
         position: sticky;
-        top: 2rem;
+        top: 8rem; /* Increased to clear the fixed navigation bar */
         align-self: start;
     }
 }
