@@ -288,40 +288,68 @@ function initRegistrationForm() {
 }
 
 function initResearchAccordion() {
-    const filter = document.getElementById('researchFilter');
+    const filterSelect = document.getElementById('researchFilter');
     const items = document.querySelectorAll('.research-item');
-    const triggers = document.querySelectorAll('.research-item__trigger');
+    const showMoreBtn = document.getElementById('researchShowMore');
 
-    if (!filter || items.length === 0) return;
+    if (!filterSelect || !items.length) return;
 
-    filter.addEventListener('change', () => {
-        const value = filter.value;
+    let currentLimit = 4;
+    let currentFilter = filterSelect.value || 'all';
 
-        items.forEach((item) => {
-            const product = item.dataset.product;
-            if (value === 'all' || product === value) {
-                item.classList.remove('is-hidden');
+    function updateView() {
+        let visibleCount = 0;
+        let totalMatched = 0;
+
+        items.forEach(item => {
+            const matchesFilter = currentFilter === 'all' || item.getAttribute('data-product') === currentFilter;
+
+            if (matchesFilter) {
+                totalMatched++;
+                if (visibleCount < currentLimit) {
+                    item.classList.remove('is-hidden');
+                    visibleCount++;
+                } else {
+                    item.classList.add('is-hidden');
+                }
             } else {
                 item.classList.add('is-hidden');
+                item.classList.remove('is-active');
+                const trigger = item.querySelector('.research-item__trigger');
+                if (trigger) trigger.setAttribute('aria-expanded', 'false');
             }
         });
+
+        if (totalMatched > currentLimit) {
+            showMoreBtn.classList.remove('is-hidden');
+        } else {
+            showMoreBtn.classList.add('is-hidden');
+        }
+    }
+
+    filterSelect.addEventListener('change', (e) => {
+        currentFilter = e.target.value;
+        currentLimit = 4;
+        updateView();
     });
 
-    triggers.forEach((trigger) => {
-        trigger.addEventListener('click', () => {
-            const item = trigger.closest('.research-item');
-            const isActive = item.classList.contains('is-active');
-
-            // Close other open accordions
-            items.forEach((otherItem) => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('is-active');
-                    otherItem.querySelector('.research-item__trigger')?.setAttribute('aria-expanded', 'false');
-                }
-            });
-
-            item.classList.toggle('is-active', !isActive);
-            trigger.setAttribute('aria-expanded', String(!isActive));
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            currentLimit += 4;
+            updateView();
         });
+    }
+
+    items.forEach(item => {
+        const trigger = item.querySelector('.research-item__trigger');
+        if (trigger) {
+            trigger.addEventListener('click', () => {
+                const isActive = item.classList.contains('is-active');
+                item.classList.toggle('is-active');
+                trigger.setAttribute('aria-expanded', !isActive);
+            });
+        }
     });
+
+    updateView();
 }

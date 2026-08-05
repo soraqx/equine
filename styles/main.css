@@ -2262,6 +2262,12 @@ select.registration-form__input {
     .research-catalog__grid {
         grid-template-columns: 1fr 2fr;
     }
+
+    .research-catalog__header {
+        position: sticky;
+        top: 2rem;
+        align-self: start;
+    }
 }
 
 .research-catalog__eyebrow {
@@ -2378,4 +2384,9 @@ select.registration-form__input {
 
 .is-hidden {
     display: none !important;
+}
+
+.research-catalog__actions {
+    text-align: center;
+    margin-top: 2rem;
 }
