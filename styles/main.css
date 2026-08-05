@@ -1086,6 +1086,117 @@ blockquote {
     }
 }
 
+.priorities-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 1.5rem;
+}
+
+.priority-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.priority-card__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    background: var(--color-primary-pale);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    margin-bottom: 0.85rem;
+}
+
+.priority-card__title {
+    margin-bottom: 0.65rem;
+    color: var(--color-primary-dark);
+    font-size: 1.15rem;
+}
+
+.priority-card__text {
+    color: var(--color-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.catalog-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 1.5rem;
+}
+
+.product-card {
+    display: grid;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.product-card__media {
+    min-height: 10rem;
+    background: linear-gradient(180deg, rgba(10, 60, 22, 0.08), rgba(10, 60, 22, 0.02));
+}
+
+.product-card__body {
+    padding: 1.5rem;
+}
+
+.product-card__label {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary-dark);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.product-card__title {
+    margin-bottom: 0.75rem;
+    color: var(--color-navy-900);
+    font-size: 1.25rem;
+}
+
+.product-card__text {
+    margin-bottom: 1rem;
+    color: var(--color-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.product-card__features {
+    margin: 0 0 1.25rem;
+    padding-left: 1.15rem;
+    color: var(--color-primary-dark);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.product-card__features li {
+    margin-bottom: 0.45rem;
+}
+
+.product-card__cta {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-blue-600);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.product-card__cta:hover {
+    color: var(--color-gold-700);
+}
+
 /* Partnership */
 .partnership {
     background: var(--color-navy-900) !important;
