@@ -267,6 +267,19 @@ blockquote {
     gap: 0.7rem;
 }
 
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header__logo-image {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
 .header__mark {
     display: grid;
     place-items: center;
