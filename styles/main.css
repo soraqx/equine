@@ -299,6 +299,7 @@ blockquote {
 
 .header__name {
     color: var(--color-primary-dark);
+    font-family: var(--font-heading);
     font-size: 1.05rem;
     font-weight: 700;
 }
@@ -306,7 +307,9 @@ blockquote {
 .header__tagline {
     margin-top: 0.15rem;
     color: var(--color-primary);
+    font-family: var(--font-heading);
     font-size: 0.73rem;
+    font-weight: 600;
 }
 
 .header__nav {
