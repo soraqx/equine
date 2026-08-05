@@ -2390,3 +2390,105 @@ select.registration-form__input {
     text-align: center;
     margin-top: 2rem;
 }
+
+/* --- Safety Banner --- */
+.safety-banner {
+    background-color: var(--color-primary-dark);
+    color: #ffffff;
+    padding: 5rem 0;
+}
+
+.safety-banner__container {
+    display: grid;
+    gap: 3rem;
+}
+
+@media (min-width: 1024px) {
+    .safety-banner__container {
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+    }
+}
+
+.safety-banner__title {
+    font-size: 2.25rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.safety-banner__desc {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+}
+
+.safety-banner__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.safety-banner__item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.safety-banner__icon {
+    display: inline-block;
+    color: var(--color-gold-400, #d4af37);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.safety-banner__item-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.safety-banner__item-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* --- Video Library --- */
+.video-library__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.video-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.video-card__wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border: 1px solid var(--color-border);
+}
+
+.video-card__wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-card__title {
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+    text-align: center;
+}
