@@ -1243,9 +1243,8 @@ blockquote {
 
 .product-card__media img {
     width: 100%;
-    max-width: 180px;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
 }
 
 .product-card__body {
