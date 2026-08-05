@@ -246,6 +246,42 @@ document.addEventListener('DOMContentLoaded', async () => {
   await injectSections();
   initMobileMenu();
   initContactForm();
+  initRegistrationForm();
   initUniversalModals();
   initCarouselNav();
 });
+
+function initRegistrationForm() {
+  const registrationForm = document.getElementById('registerForm');
+  const messageElement = document.getElementById('regMessage');
+
+  if (!registrationForm || !messageElement) return;
+
+  registrationForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!registrationForm.reportValidity()) return;
+
+    const formData = Object.fromEntries(new FormData(registrationForm));
+
+    // Place your API call here to send the registration details and trigger the welcome email.
+    // Example providers: Formspree, EmailJS, or your own email service.
+    // Use the email sender address: equinevitalhealth@gmail.com.
+    try {
+      messageElement.textContent = 'Registering...';
+      messageElement.hidden = false;
+
+      // Example placeholder call:
+      // await fetch('https://your-form-api.example.com/register', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(formData),
+      // });
+
+      registrationForm.reset();
+      messageElement.textContent = 'Thanks — you are registered successfully.';
+    } catch (error) {
+      console.error('Registration form submission failed:', error);
+      messageElement.textContent = 'Registration failed. Please try again later.';
+    }
+  });
+}

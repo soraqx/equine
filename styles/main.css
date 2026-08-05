@@ -1898,7 +1898,8 @@ blockquote {
 }
 
 .contact-form__input,
-.contact-form__textarea {
+.contact-form__textarea,
+.registration-form__input {
     width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 0.25rem;
@@ -1909,6 +1910,31 @@ blockquote {
 
 .contact-form__textarea {
     resize: vertical;
+}
+
+.registration-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.registration-form__group {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.registration-form__label {
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.registration-form__submit {
+    justify-self: start;
+}
+
+.registration-form__message {
+    color: var(--color-white);
+    font-size: 0.9rem;
 }
 
 .contact-form__status {
