@@ -1111,7 +1111,7 @@ blockquote {
 
 @media (min-width: 768px) {
     .riders-support {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .routine-grid {
