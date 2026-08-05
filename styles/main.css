@@ -2114,3 +2114,59 @@ blockquote {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
+
+/* --- Registration Section --- */
+.registration-section {
+    background-color: #f9f9fa;
+    padding: 5rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.registration-section__container {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .registration-section__container {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+    }
+}
+
+.registration-section__title {
+    font-size: 2.25rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 1rem;
+}
+
+.registration-section__desc {
+    font-size: 1.1rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+.registration-section__form-wrapper {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-border);
+}
+
+.registration-section__form-wrapper .registration-form__label {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+
+.registration-section__form-wrapper .registration-form__input {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    color: #333333;
+}
+
+.registration-section__form-wrapper .registration-form__input:focus {
+    border-color: var(--color-primary-dark);
+    outline: none;
+}

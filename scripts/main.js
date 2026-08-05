@@ -252,8 +252,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function initRegistrationForm() {
-  const registrationForm = document.getElementById('registerForm');
-  const messageElement = document.getElementById('regMessage');
+  const registrationForm = document.getElementById('registerFormInline');
+  const messageElement = document.getElementById('regMessageInline');
 
   if (!registrationForm || !messageElement) return;
 
@@ -263,14 +263,14 @@ function initRegistrationForm() {
 
     const formData = Object.fromEntries(new FormData(registrationForm));
 
-    // Place your API call here to send the registration details and trigger the welcome email.
-    // Example providers: Formspree, EmailJS, or your own email service.
-    // Use the email sender address: equinevitalhealth@gmail.com.
     try {
       messageElement.textContent = 'Registering...';
       messageElement.hidden = false;
 
-      // Example placeholder call:
+      // Place your API call here to send the registration details and trigger the welcome email.
+      // Example providers: Formspree, EmailJS, or your own email service.
+      // Use the email sender address: equinevitalhealth@gmail.com.
+      console.log('Registration payload:', formData);
       // await fetch('https://your-form-api.example.com/register', {
       //   method: 'POST',
       //   headers: { 'Content-Type': 'application/json' },
