@@ -1103,41 +1103,17 @@ blockquote {
     height: 100%;
 }
 
-.priority-card__media-split {
-    display: flex;
-    background-color: #f9f9fa;
+.priority-card__media {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
     border-bottom: 1px solid var(--color-border);
 }
 
-.priority-card__product {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 1.5rem 1rem 1rem;
-    border-right: 1px solid var(--color-border);
-    text-align: center;
-}
-
-.priority-card__product:last-child {
-    border-right: none;
-}
-
-.priority-card__product img {
+.priority-card__media img {
     width: 100%;
-    max-width: 100px;
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 1rem;
-}
-
-.priority-card__product-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--color-text-muted);
+    height: 100%;
+    object-fit: cover;
 }
 
 .priority-card__content {
@@ -1157,15 +1133,31 @@ blockquote {
 }
 
 .priority-card__title {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--color-primary-dark);
     font-size: 1.15rem;
+}
+
+.priority-card__caption {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .priority-card__desc {
     color: var(--color-muted);
     line-height: 1.6;
     font-size: 0.95rem;
+}
+
+@media (min-width: 1024px) {
+    .priorities-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 .catalog-grid {
