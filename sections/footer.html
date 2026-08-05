@@ -31,7 +31,30 @@
                     <label for="regEmailInline" class="registration-form__label">Email Address *</label>
                     <input type="email" id="regEmailInline" name="email" class="registration-form__input" required>
                 </div>
-                <button type="submit" class="btn-primary registration-form__submit">Register</button>
+                <div class="registration-form__group">
+                    <label for="regPhoneInline" class="registration-form__label">Phone Number</label>
+                    <input type="tel" id="regPhoneInline" name="phone" class="registration-form__input">
+                </div>
+                <div class="registration-form__group">
+                    <label for="regServiceInline" class="registration-form__label">Service of Interest *</label>
+                    <select id="regServiceInline" name="service" class="registration-form__input" required>
+                        <option value="" disabled selected>Select an option...</option>
+                        <option value="horses">Horses</option>
+                        <option value="riders">Riders</option>
+                        <option value="professionals">Professionals</option>
+                        <option value="partnership">Partnership & Research</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="registration-form__group">
+                    <label for="regMessageInline" class="registration-form__label">Message *</label>
+                    <textarea id="regMessageInline" name="message" class="registration-form__input registration-form__textarea" rows="4" required></textarea>
+                </div>
+                <div class="registration-form__group registration-form__group--checkbox">
+                    <input type="checkbox" id="regConsentInline" name="consent" class="registration-form__checkbox" required>
+                    <label for="regConsentInline" class="registration-form__label--inline">I consent to having this information used to respond to my inquiry. *</label>
+                </div>
+                <button type="submit" class="btn-primary registration-form__submit">Submit Inquiry</button>
                 <p class="registration-form__message" id="regMessageInline"></p>
             </form>
         </div>
