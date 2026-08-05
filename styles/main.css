@@ -1094,33 +1094,75 @@ blockquote {
 }
 
 .priority-card {
-    background: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-sm);
+    border-radius: 8px;
+    background: #ffffff;
+    height: 100%;
 }
 
-.priority-card__badge {
-    display: inline-flex;
+.priority-card__media-split {
+    display: flex;
+    background-color: #f9f9fa;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.priority-card__product {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 999px;
-    background: var(--color-primary-pale);
-    color: var(--color-primary-dark);
+    justify-content: flex-end;
+    padding: 1.5rem 1rem 1rem;
+    border-right: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.priority-card__product:last-child {
+    border-right: none;
+}
+
+.priority-card__product img {
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.priority-card__product-label {
+    font-size: 0.65rem;
     font-weight: 700;
-    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+.priority-card__content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.priority-card__eyebrow {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary-dark);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .priority-card__title {
-    margin-bottom: 0.65rem;
+    margin-bottom: 0.75rem;
     color: var(--color-primary-dark);
     font-size: 1.15rem;
 }
 
-.priority-card__text {
+.priority-card__desc {
     color: var(--color-muted);
     line-height: 1.6;
     font-size: 0.95rem;
