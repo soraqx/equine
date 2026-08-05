@@ -919,6 +919,13 @@ blockquote {
 .partnership__hero {
     display: grid;
     gap: 2rem;
+    align-items: start;
+}
+
+.partnership__content {
+    align-self: start;
+    position: sticky;
+    top: 6rem;
 }
 
 .partnership .section__eyebrow {
