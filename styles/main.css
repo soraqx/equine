@@ -2454,6 +2454,26 @@ select.registration-form__input {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.safety-banner__btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.safety-banner__btn:hover,
+.safety-banner__btn:focus {
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+    border-color: #ffffff;
+}
+
 /* --- Video Library --- */
 .video-library__grid {
     display: grid;
