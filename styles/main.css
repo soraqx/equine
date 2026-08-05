@@ -139,7 +139,7 @@ blockquote {
 .container {
     width: min(calc(100% - 2rem), var(--container));
     margin-inline: auto;
-    align-items: center;
+
 }
 
 .section {
