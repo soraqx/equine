@@ -2754,3 +2754,46 @@ select.registration-form__input {
     border-radius: 4px;
     mix-blend-mode: multiply;
 }
+
+/* --- Fix 1: Scrollable Media Container --- */
+.split-modal__media,
+.profile-modal__media {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+
+.split-modal__media::-webkit-scrollbar,
+.profile-modal__media::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Fix 2: High-Contrast, High Z-Index Close Button --- */
+.split-modal__close,
+.profile-modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 99999;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.split-modal__close:hover,
+.profile-modal__close:hover {
+    background-color: var(--color-primary-dark);
+    border-color: #ffffff;
+    transform: scale(1.1);
+}
