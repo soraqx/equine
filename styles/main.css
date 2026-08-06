@@ -874,6 +874,30 @@ blockquote {
     }
 }
 
+/* --- Mobile Modal Media Fix --- */
+.split-modal__media {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.split-modal__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Reset for Desktop Split Layout */
+@media (min-width: 768px) {
+    .split-modal__media {
+        height: auto;
+        min-height: 100%;
+    }
+}
+
 /* Products */
 .products-overview__categories {
     display: grid;
