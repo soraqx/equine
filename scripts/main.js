@@ -390,3 +390,32 @@ function initPlacementLoader() {
         loadGuide(activeBtn.dataset.placement);
     }
 }
+
+// --- Global Image Lightbox ---
+document.addEventListener('DOMContentLoaded', () => {
+  const lightbox = document.getElementById('globalLightbox');
+  const lightboxImg = document.getElementById('lightboxImage');
+
+  if (!lightbox || !lightboxImg) return;
+
+  // Event delegation supports images added after their parent sections load.
+  document.body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('img-zoomable')) {
+      lightboxImg.src = event.target.src;
+      lightbox.classList.add('is-visible');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Close when the close button or backdrop is clicked.
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox || event.target.classList.contains('lightbox__close')) {
+      lightbox.classList.remove('is-visible');
+      document.body.style.overflow = '';
+
+      setTimeout(() => {
+        lightboxImg.src = '';
+      }, 300);
+    }
+  });
+});

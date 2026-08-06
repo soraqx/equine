@@ -790,6 +790,61 @@ blockquote {
     aspect-ratio: 4 / 3;
 }
 
+/* --- Global Lightbox --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 60, 22, 0.95);
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.is-visible {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox__content {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.lightbox__close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    z-index: 10000;
+}
+
+.lightbox__close:hover {
+    color: var(--color-gold-400, #d4af37);
+}
+
+/* Utility class for target images */
+.img-zoomable {
+    cursor: zoom-in;
+    transition: opacity 0.2s ease;
+}
+
+.img-zoomable:hover {
+    opacity: 0.85;
+}
+
 .split-modal__content {
     flex: 1;
     padding: 2rem 1.5rem;
